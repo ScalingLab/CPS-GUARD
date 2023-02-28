@@ -76,6 +76,7 @@ class MultilayerAutoEncoder():
 
 
         #---- adaptive threshold --- #
+        # --- outlier computation --- #
         iso = IsolationForest(n_estimators=100, contamination=0.05)
         yhat = iso.fit_predict(x_val)
 
@@ -134,14 +135,6 @@ class MultilayerAutoEncoder():
 
 
         print("THRESH ----> " + str(threshold))
-
-
-        # --- outlier computation --- #
-
-        iso = IsolationForest(n_estimators=100, contamination=0.05)
-        yhat = iso.fit_predict(x_val)
-
-        #------------------------ #
 
 
         # ---- percentile approach ( threshold fixed) ---- #
