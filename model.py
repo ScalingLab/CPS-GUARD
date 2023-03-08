@@ -23,7 +23,7 @@ from numpy import argmax
 
 
 
-np.random.seed(77145)
+np.random.seed(1113)
 
 
 class MultilayerAutoEncoder():
@@ -33,7 +33,7 @@ class MultilayerAutoEncoder():
 
         layer = Dense(36, activation='relu', kernel_initializer=initializers.RandomNormal(), activity_regularizer=regularizers.l1(10e-5))(input_layer)
 
-        layer = Dense(8, activation='relu', kernel_initializer=initializers.RandomNormal(), activity_regularizer=regularizers.l1(10e-5))(layer)
+        layer = Dense(6, activation='relu', kernel_initializer=initializers.RandomNormal(), activity_regularizer=regularizers.l1(10e-5))(layer)
 
         layer = Dense(36, activation='relu', kernel_initializer=initializers.RandomNormal(), activity_regularizer=regularizers.l1(10e-5))(layer)
 
@@ -52,8 +52,7 @@ class MultilayerAutoEncoder():
 
         print('Start training.')
 
-        opt = tf.keras.optimizers.RMSprop(learning_rate=0.0001)
-        self.autoencoder.compile(optimizer=opt, loss='mean_squared_error')
+        self.autoencoder.compile(optimizer='rmsprop', loss='mean_squared_error')
 
         history = self.autoencoder.fit(x, y,
                                        epochs=epochs,

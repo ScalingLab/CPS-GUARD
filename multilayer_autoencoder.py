@@ -6,9 +6,9 @@ from pathlib import Path
 base_dir = str(Path().resolve().parent)
 
 
-trainingFile = 'WUSTL-TRAIN.csv'
-validationFile= 'WUSTL-VALIDATION.csv'
-testFile=  'WUSTL-TEST-balanced.csv'
+trainingFile = 'Provision_PT_737E_Security_camera-TRAIN.csv'
+validationFile= 'Provision_PT_737E_Security_camera-VALIDATION.csv'
+testFile=  'Provision_PT_737E_Security_camera-TEST.csv'
 
 
 x_train, x_val, x_test, y_val, y_test, lval, ltest =  get_data_from_files(trainingFile, validationFile, testFile)
@@ -26,4 +26,3 @@ history, threshold = autoencoder.train(x_train, x_train)
 
 autoencoder.evaluate(x_val, y_val, threshold, lval)
 autoencoder.evaluate(x_test, y_test, threshold, ltest)
-
